@@ -5,6 +5,62 @@
     <meta charset="UTF-8">
     <title>MEROE - Los Berrocales</title>
     <style>
+        /* ===== ADAPTACIÓN PARA MÓVIL ===== */
+        @media (max-width: 768px) {
+            /* Ajuste del título gigante */
+            header h1 { 
+                font-size: 3.5rem !important; 
+                letter-spacing: 1px !important;
+            }
+            
+            header { padding: 60px 10px !important; }
+
+            /* Cronología: de Horizontal a Vertical */
+            .timeline { 
+                flex-direction: column !important; 
+                padding-left: 40px !important; 
+                align-items: flex-start !important;
+            }
+            .timeline::before { 
+                width: 2px !important; 
+                height: 100% !important; 
+                left: 49px !important; 
+                top: 0 !important; 
+            }
+            .timeline-progress { 
+                width: 2px !important; 
+                left: 49px !important; 
+                height: 15% !important; /* Ajusta este % según el progreso actual */
+            }
+            .timeline-step { 
+                display: flex !important; 
+                align-items: center !important; 
+                gap: 20px !important; 
+                margin-bottom: 25px !important; 
+                text-align: left !important;
+            }
+            .timeline-step .circle { margin: 0 !important; }
+            .timeline-step span { margin-top: 0 !important; font-size: 0.8rem !important; }
+
+            /* Tarjetas de propuestas */
+            .proposal-card { 
+                flex-direction: column !important; 
+                padding-right: 0 !important; 
+            }
+            .proposal-photo { 
+                width: 100% !important; 
+                height: 180px !important; 
+            }
+            
+            /* Botones anchos para el dedo */
+            .boton { 
+                width: 90% !important; 
+                display: block !important; 
+                margin: 10px auto !important; 
+                text-align: center;
+            }
+        }
+    
         /* ===== Estilos Generales ===== */
         body {
             font-family: 'Arial', sans-serif;
@@ -113,20 +169,20 @@
         header img:hover {
             transform: scale(1.05);
         }
+        /* Botones Premium - Forzar estilo en móvil */
         .boton {
-            display: inline-block;
-            background-color: #25D366; /* Verde WhatsApp */
-            color: white;
-            padding: 16px 32px;        /* Más amplios para que parezcan botones premium */
-            margin: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            border-radius: 50px;       /* Forma de píldora (totalmente redondeada) */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra suave para dar profundidad */
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación elástica */
-            border: 2px solid transparent;
-            cursor: pointer;
+            display: inline-block !important;
+            background-color: #25D366 !important; /* Forzamos el Verde WhatsApp */
+            color: white !important;              /* Texto siempre blanco */
+            padding: 14px 28px !important;        /* Tamaño adaptado */
+            margin: 8px 5px !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+            font-size: 0.85rem !important;
+            border-radius: 50px !important;       /* Forma de píldora */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important; /* Sombra original */
+            border: 2px solid transparent !important;
+            width: auto !important;               /* Que no ocupe toda la pantalla */
         }
 
         .boton:hover {
@@ -135,6 +191,11 @@
             border: 2px solid #25D366;
             transform: translateY(-5px) scale(1.05); /* Se eleva y crece un poco al pasar el ratón */
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Añade esto para asegurar que el área de los botones esté centrada */
+        header {
+            text-align: center !important;
         }
 
         main {
@@ -343,6 +404,78 @@
 
 
         /* ===== Cronología Estilizada ===== */
+        /* ===== TODO ESTO VA DENTRO DEL @MEDIA ===== */
+        @media (max-width: 768px) {
+            .timeline { 
+                flex-direction: column !important; 
+                align-items: flex-start !important; 
+                margin: 40px 0 !important;
+                padding-left: 20px !important; 
+                position: relative !important;
+                display: flex !important; /* Asegura que se comporte como bloque flexible */
+            }
+
+            /* Línea gris de fondo */
+            .timeline::before { 
+                content: "" !important;
+                position: absolute !important;
+                left: 29px !important; 
+                top: 10px !important;
+                width: 2px !important; 
+                height: calc(95% - 35px) !important; 
+                background: #e5e5e5 !important;
+                z-index: 1 !important;
+            }
+
+            /* Línea negra de progreso */
+            .timeline-progress { 
+                position: absolute !important;
+                left: 29px !important; 
+                top: 10px !important;
+                width: 2px !important; 
+                height: 0% !important; /* CAMBIA ESTO PARA SUBIR/BAJAR EL NEGRO */
+                background: #1a1a1a !important;
+                z-index: 2 !important;
+                display: block !important;
+            }
+
+            .timeline-step { 
+                display: flex !important; 
+                align-items: center !important; 
+                gap: 20px !important; 
+                margin-bottom: 30px !important; 
+                position: relative !important;
+                z-index: 3 !important;
+                width: 100% !important;
+            }
+
+            /* El círculo normal */
+            .timeline-step .circle { 
+                margin: 0 !important; 
+                width: 20px !important;  
+                height: 20px !important;
+                flex-shrink: 0 !important;
+                background: white !important;
+                border: 2px solid #e5e5e5 !important;
+                border-radius: 50% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* EL PUNTO NEGRO (ACTIVO) */
+            .timeline-step.active .circle {
+                background: #1a1a1a !important; /* Relleno negro */
+                border: 3px solid white !important; /* Borde interior blanco */
+                outline: 2px solid #1a1a1a !important; /* Borde exterior negro */
+            }
+
+            .timeline-step span { 
+                margin: 0 !important;
+                font-size: 0.8rem !important;
+                color: #333 !important;
+                font-weight: bold !important;
+                text-transform: uppercase !important;
+            }
+        } /* <--- ESTA LLAVE ES VITAL. CIERRA EL MODO MÓVIL */
         /* ===== Cronología Minimalista de Lujo ===== */
         .timeline {
             display: flex;
@@ -440,6 +573,8 @@
         }
 
         /* ===== Propuestas con foto + descripción + timeline igual que estado de la promoción ===== */
+        /* ============================================================
+        
         /* ===== Propuestas: Formato Catálogo Discreto ===== */
         .proposal-grid {
             display: flex;
@@ -649,6 +784,99 @@
             font-size: 1.2em;
             user-select: none; /* Evita que se seleccione el icono como texto */
         }
+        @media screen and (max-width: 768px) {
+            /* 1. LA TARJETA: Diseño fluido */
+            .proposal-card {
+                display: block !important; /* Cambiamos grid por block para evitar cortes */
+                padding: 15px !important;
+                height: auto !important;
+            }
+
+            /* 2. CONTENEDOR SUPERIOR (Foto + Info) */
+            /* Usamos flex solo para poner la foto al lado del texto */
+            .proposal-photo {
+                float: left !important; /* La foto flota a la izquierda */
+                width: 70px !important; 
+                height: 70px !important;
+                margin-right: 12px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .proposal-photo img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                border-radius: 6px !important;
+            }
+
+            /* 3. EL TEXTO: Se adapta al espacio de la foto */
+            .proposal-details {
+                display: block !important;
+                text-align: left !important;
+            }
+
+            .proposal-description h3 {
+                font-size: 0.9rem !important;
+                line-height: 1.2 !important;
+                margin: 0 0 5px 0 !important;
+                color: #004d40 !important;
+                display: block !important; /* Asegura que el título no se corte */
+            }
+
+            .proposal-description p {
+                font-size: 0.75rem !important;
+                line-height: 1.3 !important;
+                color: #666 !important;
+                margin-bottom: 15px !important;
+            }
+
+            /* 4. LA CRONOLOGÍA: SE VA DEBAJO DE TODO LIMPIANDO EL FLOTADO */
+            .proposal-timeline {
+                clear: both !important; /* ESTO HACE QUE BAJE DEBAJO DE LA FOTO Y TEXTO */
+                width: 100% !important;
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: flex-start !important;
+                padding-top: 20px !important;
+                border-top: 1px solid #eee !important;
+                margin-top: 10px !important;
+            }
+
+            /* Ajuste de los pasos para que no choquen */
+            .proposal-timeline .timeline-step {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                position: relative !important;
+            }
+
+            .proposal-timeline .timeline-step span {
+                font-size: 0.5rem !important;
+                text-align: center !important;
+                margin-top: 8px !important;
+                line-height: 1 !important;
+                display: block !important;
+                color: #888 !important;
+                width: 100% !important;
+            }
+
+            /* Círculos y línea */
+            .proposal-timeline .circle {
+                width: 12px !important;
+                height: 12px !important;
+                background: white !important;
+                border: 2px solid #ddd !important;
+                z-index: 2 !important;
+            }
+
+            .proposal-timeline .timeline-progress,
+            .proposal-timeline::after {
+                top: 6px !important; /* Ajustado al centro del círculo de 12px */
+                height: 2px !important;
+                left: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -806,7 +1034,7 @@
             <h3 class="titulo-lujo">Propuestas de Modificación</h3>
         
             <div class="proposal-grid">
-            
+                
                 <div class="proposal-card">
                     <div class="proposal-photo">
                         <img src="oscilobatiente.jpg" alt="Ventanas">
