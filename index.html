@@ -17,202 +17,127 @@
             color: #333;
         }
 
+        /* ===== Pantalla de Acceso ===== */
+        #pantalla-acceso {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("meroe2.jpg") center/cover;
+            display: flex; justify-content: center; align-items: center;
+            z-index: 99999;
+        }
+
+        .caja-login {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 85%;
+        }
+
+        .password-container { position: relative; width: 100%; margin: 20px 0; }
+        .password-container input {
+            width: 100%; padding: 12px; border: 2px solid #eee;
+            border-radius: 10px; box-sizing: border-box; font-size: 16px;
+        }
+
+        #togglePassword {
+            position: absolute; right: 15px; top: 50%;
+            transform: translateY(-50%); cursor: pointer; font-size: 1.2em;
+        }
+
         /* ===== Header ===== */
         header {
-            background: 
-                linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url("foto_promocion.jpg") no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 120px 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("foto_promocion.jpg") no-repeat center center/cover;
+            color: white; padding: 100px 20px; text-align: center;
         }
 
         header h1 {
-            font-family: 'Arial Black', sans-serif;
-            font-size: 7rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin: 0;
+            font-family: 'Arial Black', sans-serif; font-size: 6rem;
+            text-transform: uppercase; margin: 0;
             background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
         }
 
-        header h2 {
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(5px);
-            padding: 10px 25px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-left: 6px solid #25D366; 
-            margin-top: 10px;
-            font-size: 1.4rem;
+        header h2, header h3 {
+            display: inline-block; text-transform: uppercase; letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.9); background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(5px); padding: 10px 25px; border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2); border-left: 6px solid #25D366; 
+            margin-top: 10px; font-size: 1.2rem;
         }
 
-        h3 {
-            color: #064e3b;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(6, 78, 59, 0.1);
-            padding-bottom: 15px;
-        }
-
-        .boton {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 16px 32px;
-            margin: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .boton:hover {
-            background-color: white;
-            color: #25D366;
-            border: 2px solid #25D366;
-            transform: translateY(-5px);
-        }
-
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            margin-bottom: 60px;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- BOTÓN Y PANEL LATERAL IZQUIERDO --- */
+        /* ===== Menú Lateral ===== */
         .menu-boton {
-            position: fixed;
-            top: 25px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background: #064e3b;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            z-index: 10001;
-            box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+            position: fixed; top: 25px; left: 20px; width: 45px; height: 45px;
+            background: #064e3b; border-radius: 8px; display: flex;
+            flex-direction: column; justify-content: center; align-items: center;
+            gap: 5px; cursor: pointer; z-index: 10001; box-shadow: 4px 0 10px rgba(0,0,0,0.2);
         }
-
-        .menu-boton span { width: 30px; height: 4px; background: white; border-radius: 2px; }
+        .menu-boton span { width: 25px; height: 3px; background: white; border-radius: 2px; }
 
         #panel-lateral {
-            position: fixed;
-            top: 0;
-            left: -320px;
-            width: 280px;
-            height: 100vh;
-            background: white;
-            z-index: 10000;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
-            padding: 80px 0 20px 0;
+            position: fixed; top: 0; left: -310px; width: 280px; height: 100vh;
+            background: white; z-index: 10000; transition: 0.4s;
+            display: flex; flex-direction: column; padding: 80px 0 20px 0;
             box-shadow: 5px 0 20px rgba(0,0,0,0.15);
         }
-
         #panel-lateral.abierto { left: 0; }
 
-        .panel-header {
-            padding: 0 25px 20px;
-            color: #064e3b;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
         #panel-lateral a, .menu-desplegable-btn {
-            padding: 20px 25px;
-            text-decoration: none;
-            color: #333;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-bottom: 1px solid #f4f4f4;
-            transition: 0.3s;
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            display: block;
-            box-sizing: border-box;
-            cursor: pointer;
-            font-family: inherit;
+            padding: 18px 25px; text-decoration: none; color: #333; font-weight: bold;
+            text-align: left; background: none; border: none; display: block;
+            width: 100%; cursor: pointer; border-bottom: 1px solid #f4f4f4;
         }
 
-        .sub-menu { max-height: 0; overflow: hidden; background: #f9fdfb; transition: max-height 0.4s ease-out; }
+        .sub-menu { max-height: 0; overflow: hidden; background: #f9fdfb; transition: 0.4s; }
         .sub-menu.show { max-height: 400px; border-bottom: 1px solid #eee; }
-        .sub-menu-content { padding: 20px; text-align: center; }
-        .logo-constructora { width: 140px; height: auto; }
 
-        /* --- CRONOLOGÍA --- */
-        .timeline { display: flex; justify-content: space-between; position: relative; margin: 60px 0; }
-        .timeline::before { content: ''; position: absolute; top: 10px; left: 0; width: 100%; height: 2px; background: #e5e5e5; z-index: 0; }
-        .timeline-progress { position: absolute; top: 10px; left: 0; height: 2px; background: #1a1a1a; z-index: 1; transition: width 0.8s; }
-        .timeline-step { flex: 1; position: relative; z-index: 2; text-align: center; }
-        .timeline-step .circle { width: 20px; height: 20px; border-radius: 50%; margin: 0 auto; background: white; border: 2px solid #e5e5e5; }
-        .timeline-step.active .circle { background: #1a1a1a; border: 4px solid white; outline: 2px solid #1a1a1a; }
-        .timeline-step span { display: block; margin-top: 15px; font-size: 0.65rem; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- PROPUESTAS --- */
-        .proposal-card { display: flex; align-items: center; background: #fff; border: 1px solid #eee; margin-bottom: 20px; padding-right: 15px; border-radius: 8px; overflow: hidden; }
-        .proposal-photo { width: 120px; height: 180px; flex-shrink: 0; }
-        .proposal-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .proposal-details { flex: 1; padding: 20px; }
-
-        /* --- PANTALLA ACCESO --- */
-        #pantalla-acceso {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("meroe2.jpg") center/cover;
-            display: flex; justify-content: center; align-items: center; z-index: 99999;
+        /* ===== Secciones y Contenido ===== */
+        main { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        section {
+            margin-bottom: 40px; background: white; padding: 30px;
+            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0; transform: translateY(20px); transition: 0.6s;
         }
-        .caja-login { background: white; padding: 40px; border-radius: 20px; text-align: center; width: 90%; max-width: 400px; }
+        section.visible { opacity: 1; transform: translateY(0); }
 
-        /* AJUSTES ESCALA MÓVIL */
+        h3 { color: #064e3b; text-transform: uppercase; letter-spacing: 3px; text-align: center; }
+
+        .boton {
+            display: inline-block; background-color: #25D366; color: white;
+            padding: 16px 32px; margin: 10px; text-decoration: none;
+            font-weight: bold; border-radius: 50px; transition: 0.3s;
+        }
+
+        /* ===== Cronología ===== */
+        .timeline { display: flex; justify-content: space-between; position: relative; margin: 60px 0; }
+        .timeline::before { content: ''; position: absolute; top: 10px; left: 0; width: 100%; height: 2px; background: #e5e5e5; }
+        .timeline-progress { position: absolute; top: 10px; height: 2px; background: #1a1a1a; transition: 0.8s; }
+        .timeline-step { flex: 1; text-align: center; position: relative; z-index: 2; }
+        .timeline-step .circle { width: 18px; height: 18px; border-radius: 50%; background: white; border: 2px solid #e5e5e5; margin: 0 auto; }
+        .timeline-step.active .circle { background: #1a1a1a; border: 4px solid white; outline: 2px solid #1a1a1a; }
+        .timeline-step span { display: block; margin-top: 15px; font-size: 0.6rem; font-weight: bold; color: #999; text-transform: uppercase; }
+
+        /* ===== Propuestas ===== */
+        .proposal-card { display: flex; align-items: center; background: white; border: 1px solid #f0f0f0; margin-bottom: 20px; border-radius: 8px; overflow: hidden; }
+        .proposal-photo { width: 100px; height: 150px; flex-shrink: 0; }
+        .proposal-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .proposal-details { padding: 15px; flex: 1; }
+
+        /* ===== MEDIA QUERIES MÓVIL ===== */
         @media (max-width: 600px) {
-            header h1 { font-size: 3.5rem !important; }
-            header h2 { font-size: 1.1rem; }
-            .timeline span { font-size: 0.55rem; }
-            #panel-lateral { width: 80%; }
-            .proposal-card { flex-direction: column; padding-right: 0; }
-            .proposal-photo { width: 100%; height: 150px; }
+            header h1 { font-size: 3rem; }
+            header { padding: 80px 10px; }
+            .timeline { flex-direction: column; gap: 20px; padding-left: 30px; }
+            .timeline::before { width: 2px; height: 100%; left: 38px; top: 0; }
+            .timeline-step { text-align: left; display: flex; align-items: center; gap: 20px; }
+            .timeline-step .circle { margin: 0; }
+            .proposal-card { flex-direction: column; }
+            .proposal-photo { width: 100%; height: 200px; }
+            #panel-lateral { width: 85%; }
         }
     </style>
 </head>
@@ -220,10 +145,13 @@
 
     <div id="pantalla-acceso">
         <div class="caja-login">
-            <h2>Acceso Privado</h2>
+            <h2 style="color: #064e3b; text-transform: uppercase; letter-spacing: 2px;">Acceso Privado</h2>
             <p>Introduce la clave de la promoción</p>
-            <input type="password" id="passInput" placeholder="Contraseña" style="width:100%; padding:12px; margin:20px 0; border-radius:10px; border:2px solid #eee;">
-            <button onclick="verificarAcceso()" class="boton" style="width:100%;">Entrar</button>
+            <div class="password-container">
+                <input type="password" id="passInput" placeholder="Contraseña">
+                <span id="togglePassword" onclick="mostrarClave()">👁️</span>
+            </div>
+            <button onclick="verificarAcceso()" class="boton" style="width: 100%; border: none;">Entrar</button>
         </div>
     </div>
 
@@ -234,32 +162,33 @@
         </div>
 
         <nav id="panel-lateral">
-            <div class="panel-header">MENÚ GESTIÓN MEROE</div>
-            <div class="menu-item">
-                <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-constructora')">🏗️ Constructora</button>
-                <div id="sub-constructora" class="sub-menu">
-                    <div class="sub-menu-content"><img src="logo_amenabar.png" alt="Amenabar" class="logo-constructora"><p>Amenabar</p></div>
+            <div style="padding: 0 25px 20px; color: #064e3b; font-weight: 800; font-size: 0.8rem;">MENÚ GESTIÓN MEROE</div>
+            <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-constructora')">🏗️ Constructora</button>
+            <div id="sub-constructora" class="sub-menu">
+                <div style="text-align:center; padding: 20px;">
+                    <img src="logo_amenabar.png" style="width: 130px;">
                 </div>
             </div>
-            <div class="menu-item">
-                <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-consejo')">👥 Consejo Rector</button>
-                <div id="sub-consejo" class="sub-menu">
-                    <div style="padding:15px 25px; font-size:0.9rem;">
-                        <p><strong>Presidente:</strong> [Nombre]</p>
-                        <p><strong>Vicepresidente:</strong> [Nombre]</p>
-                        <p><strong>Secretaria:</strong> [Nombre]</p>
-                    </div>
+            <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-consejo')">👥 Consejo Rector</button>
+            <div id="sub-consejo" class="sub-menu">
+                <div style="padding: 15px 25px; font-size: 0.9rem; color: #666;">
+                    <p><strong>Presidente:</strong> [Nombre]</p>
+                    <p><strong>Vicepresidente:</strong> [Nombre]</p>
+                    <p><strong>Secretaria:</strong> [Nombre]</p>
                 </div>
             </div>
             <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank">💬 WhatsApp</a>
-            <a href="meroe_memoria_calidades.pdf" target="_blank">🏠 Calidades</a>
+            <a href="meroe_memoria_calidades.pdf" target="_blank">🏠 Memoria de Calidades</a>
         </nav>
 
         <header>
             <h1>MEROE</h1>
             <h2>Plataforma de cooperativistas</h2>
             <p>Los Berrocales</p>
-            <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank" class="boton">Únete a WhatsApp</a>
+            <div style="margin-top: 20px;">
+                <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank" class="boton">Únete a WhatsApp</a>
+                <a href="Comunidades_whatsapp.pdf" target="_blank" class="boton">PDF Comunidades</a>
+            </div>
         </header>
 
         <main>
@@ -282,15 +211,15 @@
                 <div class="proposal-card">
                     <div class="proposal-photo"><img src="oscilobatiente.jpg"></div>
                     <div class="proposal-details">
-                        <h4>01. Ventanas Oscilobatientes</h4>
-                        <p>Mejora de confort térmico y acústico.</p>
+                        <h4 style="margin:0; color:#064e3b;">01. Ventanas Oscilobatientes</h4>
+                        <p style="font-size:0.9rem; color:#666;">Mejora de confort térmico y acústico.</p>
                     </div>
                 </div>
                 <div class="proposal-card">
                     <div class="proposal-photo"><img src="puerta_amario_corredera.jpg"></div>
                     <div class="proposal-details">
-                        <h4>02. Armarios Correderos</h4>
-                        <p>Optimización de espacio en dormitorios.</p>
+                        <h4 style="margin:0; color:#064e3b;">02. Armarios Correderos</h4>
+                        <p style="font-size:0.9rem; color:#666;">Optimización de espacio interior.</p>
                     </div>
                 </div>
             </section>
@@ -306,27 +235,26 @@
                 document.getElementById('pantalla-acceso').style.display = 'none';
                 document.getElementById('contenido-privado').style.display = 'block';
                 reveal();
-            } else {
-                alert("Contraseña incorrecta");
-            }
+            } else { alert("Contraseña incorrecta"); }
         }
 
-        function toggleMenu() {
-            document.getElementById('panel-lateral').classList.toggle('abierto');
+        function mostrarClave() {
+            const input = document.getElementById("passInput");
+            input.type = input.type === "password" ? "text" : "password";
         }
+
+        function toggleMenu() { document.getElementById('panel-lateral').classList.toggle('abierto'); }
 
         function toggleSubMenu(id) {
             const sub = document.getElementById(id);
-            document.querySelectorAll('.sub-menu').forEach(el => {
-                if(el.id !== id) el.classList.remove('show');
-            });
+            document.querySelectorAll('.sub-menu').forEach(el => { if(el.id !== id) el.classList.remove('show'); });
             sub.classList.toggle('show');
         }
 
         function reveal() {
             document.querySelectorAll('section').forEach(sec => {
                 const top = sec.getBoundingClientRect().top;
-                if(top < window.innerHeight - 100) sec.classList.add('visible');
+                if(top < window.innerHeight - 50) sec.classList.add('visible');
             });
         }
 
