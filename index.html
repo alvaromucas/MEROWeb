@@ -2,142 +2,108 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>MEROE - Los Berrocales</title>
     <style>
-        /* ===== Estilos Generales ===== */
+        /* ===== BASE & FONDO ===== */
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: 
-                linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                url("meroe2.jpg") no-repeat center center fixed;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("meroe2.jpg") no-repeat center center fixed;
             background-size: cover;
             color: #333;
+            overflow-x: hidden;
         }
 
-        /* ===== Pantalla de Acceso ===== */
+        /* ===== ACCESO PRIVADO ===== */
         #pantalla-acceso {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("meroe2.jpg") center/cover;
-            display: flex; justify-content: center; align-items: center;
-            z-index: 99999;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 100000;
         }
-
         .caja-login {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            max-width: 400px;
-            width: 85%;
+            background: white; padding: 30px; border-radius: 20px; text-align: center; width: 85%; max-width: 350px;
         }
-
-        .password-container { position: relative; width: 100%; margin: 20px 0; }
+        .password-container { position: relative; margin: 20px 0; }
         .password-container input {
-            width: 100%; padding: 12px; border: 2px solid #eee;
-            border-radius: 10px; box-sizing: border-box; font-size: 16px;
+            width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 10px; font-size: 16px; box-sizing: border-box;
         }
+        #togglePassword { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; }
 
-        #togglePassword {
-            position: absolute; right: 15px; top: 50%;
-            transform: translateY(-50%); cursor: pointer; font-size: 1.2em;
-        }
-
-        /* ===== Header ===== */
+        /* ===== HEADER RESPONSIVE ===== */
         header {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("foto_promocion.jpg") no-repeat center center/cover;
-            color: white; padding: 100px 20px; text-align: center;
+            padding: 100px 20px 60px; text-align: center; color: white;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("foto_promocion.jpg") center/cover;
         }
-
         header h1 {
-            font-family: 'Arial Black', sans-serif; font-size: 6rem;
-            text-transform: uppercase; margin: 0;
-            background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
+            font-size: 5rem; text-transform: uppercase; margin: 0;
+            background: linear-gradient(180deg, #fff, #ccc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        header h2 {
+            display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px); border-radius: 8px; border-left: 5px solid #25D366; font-size: 1.2rem;
         }
 
-        header h2, header h3 {
-            display: inline-block; text-transform: uppercase; letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.9); background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(5px); padding: 10px 25px; border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2); border-left: 6px solid #25D366; 
-            margin-top: 10px; font-size: 1.2rem;
-        }
-
-        /* ===== Menú Lateral ===== */
+        /* ===== MENU LATERAL ===== */
         .menu-boton {
-            position: fixed; top: 25px; left: 20px; width: 45px; height: 45px;
-            background: #064e3b; border-radius: 8px; display: flex;
-            flex-direction: column; justify-content: center; align-items: center;
-            gap: 5px; cursor: pointer; z-index: 10001; box-shadow: 4px 0 10px rgba(0,0,0,0.2);
+            position: fixed; top: 20px; left: 20px; width: 50px; height: 50px;
+            background: #064e3b; border-radius: 10px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; gap: 5px; cursor: pointer; z-index: 10001;
         }
-        .menu-boton span { width: 25px; height: 3px; background: white; border-radius: 2px; }
+        .menu-boton span { width: 30px; height: 4px; background: white; border-radius: 2px; }
 
         #panel-lateral {
-            position: fixed; top: 0; left: -310px; width: 280px; height: 100vh;
-            background: white; z-index: 10000; transition: 0.4s;
-            display: flex; flex-direction: column; padding: 80px 0 20px 0;
-            box-shadow: 5px 0 20px rgba(0,0,0,0.15);
+            position: fixed; top: 0; left: -300px; width: 280px; height: 100vh;
+            background: white; z-index: 10000; transition: 0.4s; padding-top: 80px;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
         }
         #panel-lateral.abierto { left: 0; }
-
         #panel-lateral a, .menu-desplegable-btn {
-            padding: 18px 25px; text-decoration: none; color: #333; font-weight: bold;
-            text-align: left; background: none; border: none; display: block;
-            width: 100%; cursor: pointer; border-bottom: 1px solid #f4f4f4;
+            display: block; padding: 20px; text-decoration: none; color: #333; font-weight: bold;
+            border-bottom: 1px solid #eee; width: 100%; text-align: left; background: none; border: none; cursor: pointer;
         }
+        .sub-menu { max-height: 0; overflow: hidden; background: #f9fdfb; transition: 0.3s; }
+        .sub-menu.show { max-height: 300px; }
 
-        .sub-menu { max-height: 0; overflow: hidden; background: #f9fdfb; transition: 0.4s; }
-        .sub-menu.show { max-height: 400px; border-bottom: 1px solid #eee; }
-
-        /* ===== Secciones y Contenido ===== */
-        main { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        /* ===== CONTENIDO ===== */
+        main { max-width: 800px; margin: 20px auto; padding: 20px; }
         section {
-            margin-bottom: 40px; background: white; padding: 30px;
-            border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            opacity: 0; transform: translateY(20px); transition: 0.6s;
+            background: white; padding: 25px; border-radius: 15px; margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); opacity: 0; transform: translateY(20px); transition: 0.6s;
         }
         section.visible { opacity: 1; transform: translateY(0); }
-
-        h3 { color: #064e3b; text-transform: uppercase; letter-spacing: 3px; text-align: center; }
+        h3 { color: #064e3b; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
 
         .boton {
-            display: inline-block; background-color: #25D366; color: white;
-            padding: 16px 32px; margin: 10px; text-decoration: none;
-            font-weight: bold; border-radius: 50px; transition: 0.3s;
+            display: inline-block; background: #25D366; color: white; padding: 15px 30px;
+            text-decoration: none; border-radius: 50px; font-weight: bold; margin: 10px; border: none; cursor: pointer;
         }
 
-        /* ===== Cronología ===== */
-        .timeline { display: flex; justify-content: space-between; position: relative; margin: 60px 0; }
-        .timeline::before { content: ''; position: absolute; top: 10px; left: 0; width: 100%; height: 2px; background: #e5e5e5; }
-        .timeline-progress { position: absolute; top: 10px; height: 2px; background: #1a1a1a; transition: 0.8s; }
-        .timeline-step { flex: 1; text-align: center; position: relative; z-index: 2; }
-        .timeline-step .circle { width: 18px; height: 18px; border-radius: 50%; background: white; border: 2px solid #e5e5e5; margin: 0 auto; }
-        .timeline-step.active .circle { background: #1a1a1a; border: 4px solid white; outline: 2px solid #1a1a1a; }
-        .timeline-step span { display: block; margin-top: 15px; font-size: 0.6rem; font-weight: bold; color: #999; text-transform: uppercase; }
+        /* ===== CRONOLOGÍA (ESTADO) ===== */
+        .timeline { position: relative; margin: 40px 0; padding-left: 20px; }
+        .timeline-progress { position: absolute; left: 29px; top: 0; width: 4px; height: 100%; background: #eee; }
+        .timeline-step { display: flex; align-items: center; margin-bottom: 30px; position: relative; z-index: 2; }
+        .timeline-step .circle { width: 22px; height: 22px; background: white; border: 3px solid #ddd; border-radius: 50%; margin-right: 20px; }
+        .timeline-step.active .circle { background: #064e3b; border-color: #25D366; box-shadow: 0 0 10px #25D366; }
+        .timeline-step span { font-weight: bold; color: #666; font-size: 0.9rem; text-transform: uppercase; }
+        .timeline-step.active span { color: #064e3b; }
 
-        /* ===== Propuestas ===== */
-        .proposal-card { display: flex; align-items: center; background: white; border: 1px solid #f0f0f0; margin-bottom: 20px; border-radius: 8px; overflow: hidden; }
-        .proposal-photo { width: 100px; height: 150px; flex-shrink: 0; }
+        /* ===== TARJETAS PROPUESTAS ===== */
+        .proposal-card { display: flex; background: #fdfdfd; border: 1px solid #eee; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+        .proposal-photo { width: 100px; min-height: 120px; }
         .proposal-photo img { width: 100%; height: 100%; object-fit: cover; }
         .proposal-details { padding: 15px; flex: 1; }
+        .proposal-details h4 { margin: 0 0 5px; color: #064e3b; }
+        .proposal-details p { margin: 0; font-size: 0.85rem; color: #777; line-height: 1.4; }
 
-        /* ===== MEDIA QUERIES MÓVIL ===== */
+        /* ===== AJUSTES PARA MÓVIL (ELIMINA EL "VER LEJOS") ===== */
         @media (max-width: 600px) {
-            header h1 { font-size: 3rem; }
-            header { padding: 80px 10px; }
-            .timeline { flex-direction: column; gap: 20px; padding-left: 30px; }
-            .timeline::before { width: 2px; height: 100%; left: 38px; top: 0; }
-            .timeline-step { text-align: left; display: flex; align-items: center; gap: 20px; }
-            .timeline-step .circle { margin: 0; }
+            header h1 { font-size: 2.8rem; } /* Bajamos el tamaño para que quepa en una línea */
+            header h2 { font-size: 0.9rem; padding: 8px 15px; }
+            main { padding: 10px; }
+            section { padding: 15px; }
             .proposal-card { flex-direction: column; }
-            .proposal-photo { width: 100%; height: 200px; }
-            #panel-lateral { width: 85%; }
+            .proposal-photo { width: 100%; height: 150px; }
+            .boton { width: 90%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -145,64 +111,57 @@
 
     <div id="pantalla-acceso">
         <div class="caja-login">
-            <h2 style="color: #064e3b; text-transform: uppercase; letter-spacing: 2px;">Acceso Privado</h2>
-            <p>Introduce la clave de la promoción</p>
+            <h2 style="color:#064e3b; margin-top:0;">MEROE PRIVADO</h2>
+            <p>Introduce la clave para entrar</p>
             <div class="password-container">
                 <input type="password" id="passInput" placeholder="Contraseña">
                 <span id="togglePassword" onclick="mostrarClave()">👁️</span>
             </div>
-            <button onclick="verificarAcceso()" class="boton" style="width: 100%; border: none;">Entrar</button>
+            <button onclick="verificarAcceso()" class="boton">ENTRAR</button>
         </div>
     </div>
 
-    <div id="contenido-privado" style="display: none;">
+    <div id="contenido-privado" style="display:none;">
         
         <div class="menu-boton" onclick="toggleMenu()">
             <span></span><span></span><span></span>
         </div>
 
         <nav id="panel-lateral">
-            <div style="padding: 0 25px 20px; color: #064e3b; font-weight: 800; font-size: 0.8rem;">MENÚ GESTIÓN MEROE</div>
-            <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-constructora')">🏗️ Constructora</button>
+            <div style="padding: 0 20px 20px; color: #064e3b; font-weight: bold; font-size: 14px;">GESTIÓN MEROE</div>
+            <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-constructora')">🏗️ CONSTRUCTORA</button>
             <div id="sub-constructora" class="sub-menu">
-                <div style="text-align:center; padding: 20px;">
-                    <img src="logo_amenabar.png" style="width: 130px;">
-                </div>
+                <div style="text-align:center; padding:20px;"><img src="logo_amenabar.png" style="width:120px;"></div>
             </div>
-            <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-consejo')">👥 Consejo Rector</button>
+            <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-consejo')">👥 CONSEJO RECTOR</button>
             <div id="sub-consejo" class="sub-menu">
-                <div style="padding: 15px 25px; font-size: 0.9rem; color: #666;">
+                <div style="padding:15px 25px; font-size:14px;">
                     <p><strong>Presidente:</strong> [Nombre]</p>
-                    <p><strong>Vicepresidente:</strong> [Nombre]</p>
                     <p><strong>Secretaria:</strong> [Nombre]</p>
                 </div>
             </div>
-            <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank">💬 WhatsApp</a>
-            <a href="meroe_memoria_calidades.pdf" target="_blank">🏠 Memoria de Calidades</a>
+            <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0">💬 WHATSAPP</a>
+            <a href="meroe_memoria_calidades.pdf">🏠 CALIDADES</a>
         </nav>
 
         <header>
             <h1>MEROE</h1>
-            <h2>Plataforma de cooperativistas</h2>
-            <p>Los Berrocales</p>
-            <div style="margin-top: 20px;">
-                <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank" class="boton">Únete a WhatsApp</a>
-                <a href="Comunidades_whatsapp.pdf" target="_blank" class="boton">PDF Comunidades</a>
-            </div>
+            <h2>Plataforma de Cooperativistas</h2>
+            <p style="font-weight:bold; margin-top:10px;">Los Berrocales</p>
+            <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" class="boton">WhatsApp Grupo</a>
         </header>
 
         <main>
             <section>
                 <h3>Estado de la Promoción</h3>
                 <div class="timeline">
-                    <div class="timeline-progress" style="width: 8%;"></div> 
-                    <div class="timeline-step active"><div class="circle"></div><span>Inicio</span></div>
-                    <div class="timeline-step"><div class="circle"></div><span>Tierras</span></div>
+                    <div class="timeline-progress"></div>
+                    <div class="timeline-step active"><div class="circle"></div><span>Inicio Próximo</span></div>
+                    <div class="timeline-step"><div class="circle"></div><span>Tierras / Excavación</span></div>
                     <div class="timeline-step"><div class="circle"></div><span>Cimentación</span></div>
                     <div class="timeline-step"><div class="circle"></div><span>Estructura</span></div>
-                    <div class="timeline-step"><div class="circle"></div><span>Fachada</span></div>
-                    <div class="timeline-step"><div class="circle"></div><span>Acabados</span></div>
-                    <div class="timeline-step"><div class="circle"></div><span>Entrega</span></div>
+                    <div class="timeline-step"><div class="circle"></div><span>Fachada / Interiores</span></div>
+                    <div class="timeline-step"><div class="circle"></div><span>Entrega Llaves</span></div>
                 </div>
             </section>
 
@@ -211,15 +170,15 @@
                 <div class="proposal-card">
                     <div class="proposal-photo"><img src="oscilobatiente.jpg"></div>
                     <div class="proposal-details">
-                        <h4 style="margin:0; color:#064e3b;">01. Ventanas Oscilobatientes</h4>
-                        <p style="font-size:0.9rem; color:#666;">Mejora de confort térmico y acústico.</p>
+                        <h4>01. Ventanas Oscilobatientes</h4>
+                        <p>Cambio de sistema para mejorar aislamiento y ventilación.</p>
                     </div>
                 </div>
                 <div class="proposal-card">
                     <div class="proposal-photo"><img src="puerta_amario_corredera.jpg"></div>
                     <div class="proposal-details">
-                        <h4 style="margin:0; color:#064e3b;">02. Armarios Correderos</h4>
-                        <p style="font-size:0.9rem; color:#666;">Optimización de espacio interior.</p>
+                        <h4>02. Armarios Correderos</h4>
+                        <p>Ganancia de espacio útil en todos los dormitorios.</p>
                     </div>
                 </div>
             </section>
@@ -227,37 +186,28 @@
     </div>
 
     <script>
-        const CLAVE_CORRECTA = "Meroe2026";
-
+        const CLAVE = "Meroe2026";
         function verificarAcceso() {
-            const pass = document.getElementById('passInput').value;
-            if (pass === CLAVE_CORRECTA) {
+            if(document.getElementById('passInput').value === CLAVE) {
                 document.getElementById('pantalla-acceso').style.display = 'none';
                 document.getElementById('contenido-privado').style.display = 'block';
                 reveal();
-            } else { alert("Contraseña incorrecta"); }
+            } else { alert("Clave incorrecta"); }
         }
-
         function mostrarClave() {
-            const input = document.getElementById("passInput");
-            input.type = input.type === "password" ? "text" : "password";
+            let p = document.getElementById('passInput');
+            p.type = p.type === "password" ? "text" : "password";
         }
-
         function toggleMenu() { document.getElementById('panel-lateral').classList.toggle('abierto'); }
-
         function toggleSubMenu(id) {
-            const sub = document.getElementById(id);
-            document.querySelectorAll('.sub-menu').forEach(el => { if(el.id !== id) el.classList.remove('show'); });
-            sub.classList.toggle('show');
+            document.querySelectorAll('.sub-menu').forEach(s => { if(s.id !== id) s.classList.remove('show'); });
+            document.getElementById(id).classList.toggle('show');
         }
-
         function reveal() {
-            document.querySelectorAll('section').forEach(sec => {
-                const top = sec.getBoundingClientRect().top;
-                if(top < window.innerHeight - 50) sec.classList.add('visible');
+            document.querySelectorAll('section').forEach(s => {
+                if(s.getBoundingClientRect().top < window.innerHeight - 50) s.classList.add('visible');
             });
         }
-
         window.addEventListener('scroll', reveal);
         document.getElementById("passInput").addEventListener("keypress", (e) => { if (e.key === "Enter") verificarAcceso(); });
     </script>
