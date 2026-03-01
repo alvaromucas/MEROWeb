@@ -1,9 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
     <meta charset="UTF-8">
     <title>MEROE - Los Berrocales</title>
     <style>
+        /* --- AJUSTES PARA VERSIÓN MÓVIL (ZOOM) --- */
+        @media (max-width: 600px) {
+            /* Aumentamos el tamaño de letra base de toda la web */
+            html {
+                font-size: 18px; 
+            }
+
+            /* Hacemos el botón de las 3 rayitas más grande para que sea fácil pulsar */
+            .menu-boton {
+                width: 55px;
+                height: 55px;
+                top: 20px;
+                left: 15px;
+            }
+            
+            .menu-boton span {
+                width: 30px;
+                height: 4px;
+            }
+
+            /* El panel lateral ahora ocupa casi toda la pantalla para que se vea claro */
+            #panel-lateral {
+                width: 85%;
+                padding-top: 100px;
+            }
+
+            /* Textos del menú más grandes */
+            #panel-lateral a, .menu-desplegable-btn {
+                font-size: 1.2rem;
+                padding: 22px 30px;
+            }
+
+            /* El título principal de la web se ajusta para no desbordar */
+            header h1 {
+                font-size: 3.5rem !important;
+                line-height: 1.1;
+            }
+
+            /* Submenús (Amenabar y Consejo) con letra más legible */
+            .sub-menu p {
+                font-size: 1.1rem;
+                padding: 15px 45px;
+            }
+
+            .logo-constructora {
+                width: 160px; /* Logo de Amenabar más grande en móvil */
+            }
+        }
+
         /* ===== Estilos Generales ===== */
         body {
             font-family: 'Arial', sans-serif;
