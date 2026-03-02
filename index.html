@@ -195,9 +195,17 @@
 
         #panel-lateral {
             position: fixed;
-            height: 100%;
-            max-height: 100vh;
-            overflow-y: auto;  /* 👈 importante */
+            top: 0;
+            left: -300px; /* Escondido a la izquierda */
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 10000;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 80px 0 20px 0;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.15);
         }
 
         #panel-lateral.abierto {
@@ -592,11 +600,17 @@
         }
 
         #pantalla-acceso {
-            position: absolute;   /* 👈 quitamos fixed */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            min-height: 100vh;    /* 👈 usamos min-height */
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("meroe2.jpg");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
 
         .caja-login {
@@ -648,6 +662,44 @@
 
         /* ====== Movile format ===== */
         @media screen and (max-width: 768px) {
+            /* 1. Limpiamos el body para que el scroll fluya */
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background: none !important; /* Quitamos el fondo del body */
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            /* 2. Configuramos la capa fija */
+            .background-fixed {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                /* Ponemos tu imagen aquí */
+                background: 
+                    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                    url("meroe2.jpg") no-repeat center center;
+                background-size: cover;
+                z-index: -1; /* Se va al fondo */
+                pointer-events: none; /* Deja que tus dedos toquen el contenido de arriba */
+            }
+
+            /* 3. Aseguramos que el contenido sea transparente para ver el fondo */
+            #pantalla-acceso, #contenido-privado {
+                background: transparent !important;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* Forzamos que el contenido esté delante */
+            #pantalla-acceso, #contenido-privado {
+                position: relative; /* Esto permite que el z-index funcione */
+                z-index: 1; 
+            }
             /* ===== Botones Premium ===== */
             header h1 {
                 font-size: 2.8rem !important; /* Bajamos de 7rem a 2.8rem */
@@ -1005,6 +1057,7 @@
     </style>
 </head>
 <body>
+    <div class="background-fixed"></div>
     <div id="pantalla-acceso">
         <div class="caja-login">
             <h2>Acceso Privado</h2>
@@ -1120,8 +1173,18 @@
         });
     
         function mostrarClave() {
-            const input = document.getElementById("passInput");
-            input.type = input.type === "password" ? "text" : "password";
+            const passInput = document.getElementById('passInput');
+            const toggleIcon = document.getElementById('togglePassword');
+
+            if (passInput.type === 'password') {
+                // Al mostrar la contraseña
+                passInput.type = 'text';
+                toggleIcon.innerText = '🔓'; // El candado abierto
+            } else {
+                // Al ocultar la contraseña
+                passInput.type = 'password';
+                toggleIcon.innerText = '👁️'; // Vuelve al ojo (o puedes poner un candado cerrado 🔒)
+            }
         }
     
         function reveal() {
