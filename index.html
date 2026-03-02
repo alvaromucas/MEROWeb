@@ -12,9 +12,8 @@
             padding: 0;
             background: 
                 linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                url("meroe2.jpg") no-repeat center center; /* He quitado 'fixed' */
+                url("meroe2.jpg") no-repeat center center fixed;
             background-size: cover;
-            background-attachment: scroll; /* Asegura que se mueva */
             color: #333;
         }
 
@@ -95,7 +94,7 @@
             text-transform: uppercase;
             letter-spacing: 4px;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             border-bottom: 1px solid rgba(6, 78, 59, 0.1);
             padding-bottom: 15px;
         }
@@ -145,19 +144,28 @@
             margin: 40px auto;
             padding: 0 20px;
         }
-        section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-            /* Evita que el contenido bloquee el scroll si no es visible */
-            pointer-events: none; 
+
+        /* Margen GRANDE solo para la primera */
+        .seccion-principal {
+            margin-bottom: 80px !important; 
+            background: white;
+            padding: 5px;
+            border-radius: 20px;
+            opacity: 0.9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
+
+        /* Margen PEQUEÑO para las de propuestas */
+        .seccion-proposals {
+            margin-bottom: 10px !important;
+            background: white;
+            padding: 10px;
+            opacity: 0.9;
+            border-radius: 20px;
+        }
+
         
-        section.visible {
-            opacity: 1; /* Cambiado de 0.9 a 1 para mejor legibilidad */
-            transform: translateY(0);
-            pointer-events: auto; /* Habilita clicks cuando ya es visible */
-        }
+        
 
         /* --- BOTÓN Y PANEL PRINCIPAL --- */
         .menu-boton {
@@ -416,7 +424,7 @@
             letter-spacing: 2px; /* Espaciado premium entre letras */
             transition: color 0.3s;
         }
-
+        
         .timeline-step.active span {
             color: #1a1a1a;
             letter-spacing: 2.5px;
@@ -672,14 +680,6 @@
                 display: inline-block !important;
             }
 
-            /* 3. TÍTULOS DE SECCIÓN (H3 fuera del header) */
-            h3 {
-                font-size: 0.8rem !important; /* Bajamos de 2rem a 1.3rem */
-                letter-spacing: 2px !important;
-                margin-bottom: 25px !important;
-                padding-bottom: 10px !important;
-            }
-
             /* 4. PLATAFORMA DE COOPERATIVISTAS (H2 fuera del header) */
             h2 {
                 font-size: 1.1rem !important; /* Bajamos de 1.5rem a 1.1rem */
@@ -687,6 +687,15 @@
                 margin-bottom: 30px !important;
                 padding: 0 10px 10px 10px !important;
             }
+
+            /* 3. TÍTULOS DE SECCIÓN (H3 fuera del header) */
+            h3 {
+                font-size: 0.8rem !important; /* Bajamos de 2rem a 1.3rem */
+                letter-spacing: 2px !important;
+                margin-bottom: 10px !important;
+                padding-bottom: 10px !important;
+            }
+
 
             /* 5. AJUSTE DE LA IMAGEN DEL HEADER */
             header img {
@@ -715,9 +724,9 @@
                 content: "" !important;
                 position: absolute !important;
                 left: 29px !important; 
-                top: 10px !important;
+                top: -15px !important;
                 width: 2px !important; 
-                height: calc(100% - 35px) !important; 
+                height: calc(100% + 15px) !important;
                 background: #e5e5e5 !important;
                 z-index: 1 !important;
             }
@@ -726,9 +735,9 @@
             .timeline-progress { 
                 position: absolute !important;
                 left: 29px !important; 
-                top: 10px !important;
+                top: -15px !important;
                 width: 2px !important; 
-                height: 0% !important; /* CAMBIA ESTO PARA SUBIR/BAJAR EL NEGRO */
+                height: 15% !important; /* CAMBIA ESTO PARA SUBIR/BAJAR EL NEGRO */
                 background: #1a1a1a !important;
                 z-index: 2 !important;
                 display: block !important;
@@ -1010,162 +1019,148 @@
     </style>
 </head>
 <body>
-    <body>
-        <div id="pantalla-acceso">
-            <div class="caja-login">
-                <h2>Acceso Privado</h2>
-                <p>Introduce la clave de la promoción</p>
-                
-                <div class="password-container">
-                    <input type="password" id="passInput" placeholder="Contraseña">
-                    <span id="togglePassword" onclick="mostrarClave()">👁️</span>
-                </div>
-                
-                <button onclick="verificarAcceso()" class="boton">Entrar</button>
-            </div>
-        </div>
-    
-        <div id="contenido-privado" style="display: none;">
+    <div id="pantalla-acceso">
+        <div class="caja-login">
+            <h2>Acceso Privado</h2>
+            <p>Introduce la clave de la promoción</p>
             
-            <header>
-                <h1>MEROE</h1>
-                <h2>Plataforma de cooperativistas</h2>
-                <p>Los Berrocales</p>
-                <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank" class="boton">Únete a WhatsApp</a>
-                <a href="Comunidades_whatsapp.pdf" target="_blank" class="boton">PDF explicación Comunidades</a>
-                
-                
-                <div class="menu-boton" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <nav id="panel-lateral">
-                    <div class="panel-header">MENÚ GESTIÓN MEROE</div>
-                    
-                    <div class="menu-item">
-                        <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-constructora')">🏗️ Constructora</button>
-                        <div id="sub-constructora" class="sub-menu">
-                            <div class="sub-menu-content">
-                                <img src="logo_amenabar.png" alt="Logo Amenabar" class="logo-constructora">
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="menu-item">
-                        <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-consejo')">👥 Consejo Rector</button>
-                        <div id="sub-consejo" class="sub-menu">
-                            <div class="sub-menu-content-lista">
-                                <p><strong>Presidente:</strong> [Nombre]</p>
-                                <p><strong>Vicepresidente:</strong> [Nombre]</p>
-                                <p><strong>Secretaria:</strong> [Nombre]</p>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank">💬 WhatsApp</a>
-                    <a href="meroe_memoria_calidades.pdf" target="_blank">🏠 Memoria de Calidades</a>
-                </nav>
-                
-            </header>
-    
-            <main>
-                </main>
-    
+            <div class="password-container">
+                <input type="password" id="passInput" placeholder="Contraseña">
+                <span id="togglePassword" onclick="mostrarClave()">👁️</span>
+            </div>
+            
+            <button onclick="verificarAcceso()" class="boton">Entrar</button>
         </div>
+    </div>
+
+    <div id="contenido-privado" style="display: none;">
+        
+        <header>
+            <h1>MEROE</h1>
+            <h2>Plataforma de cooperativistas</h2>
+            <p>Los Berrocales</p>
+            <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank" class="boton">Únete a WhatsApp</a>
+            <a href="Comunidades_whatsapp.pdf" target="_blank" class="boton">PDF explicación Comunidades</a>
+            
+            
+            <div class="menu-boton" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="panel-lateral">
+                <div class="panel-header">MENÚ GESTIÓN MEROE</div>
+                
+                <div class="menu-item">
+                    <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-constructora')">🏗️ Constructora</button>
+                    <div id="sub-constructora" class="sub-menu">
+                        <div class="sub-menu-content">
+                            <img src="logo_amenabar.png" alt="Logo Amenabar" class="logo-constructora">
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="menu-item">
+                    <button class="menu-desplegable-btn" onclick="toggleSubMenu('sub-consejo')">👥 Consejo Rector</button>
+                    <div id="sub-consejo" class="sub-menu">
+                        <div class="sub-menu-content-lista">
+                            <p><strong>Presidente:</strong> [Nombre]</p>
+                            <p><strong>Vicepresidente:</strong> [Nombre]</p>
+                            <p><strong>Secretaria:</strong> [Nombre]</p>
+                        </div>
+                    </div>
+                </div>
+            
+                <a href="https://chat.whatsapp.com/K6voRMYpnaL8LlxvP82fa0" target="_blank">💬 WhatsApp</a>
+                <a href="meroe_memoria_calidades.pdf" target="_blank">🏠 Memoria de Calidades</a>
+            </nav>
+            
+        </header>
+
+        <main>
+            </main>
+
+    </div>
+
+    <script>
+        const CLAVE_CORRECTA = "Meroe2026";
+        const TIEMPO_EXPIRACION = 10 * 60 * 1000; // 10 minutos en milisegundos
     
-        <script>
-            const CLAVE_CORRECTA = "Meroe2026";
-            const TIEMPO_EXPIRACION = 10 * 60 * 1000; // 10 minutos en milisegundos
-        
-            window.onload = function() {
-                const accesoGuardado = localStorage.getItem("accesoMeroe");
-                const horaGuardada = localStorage.getItem("horaMeroe");
-                const ahora = new Date().getTime();
-        
-                // Comprobamos si existe la clave Y si no han pasado más de 10 min
-                if (accesoGuardado === CLAVE_CORRECTA && horaGuardada) {
-                    if (ahora - horaGuardada < TIEMPO_EXPIRACION) {
-                        entrarDirecto();
-                    } else {
-                        // Si pasó el tiempo, borramos rastro y pedimos clave
-                        localStorage.removeItem("accesoMeroe");
-                        localStorage.removeItem("horaMeroe");
-                        document.getElementById("passInput").focus();
-                    }
-                } else {
-                    document.getElementById("passInput").focus();
-                }
-            };
-        
-            function verificarAcceso() {
-                const pass = document.getElementById('passInput').value;
-        
-                if (pass === CLAVE_CORRECTA) {
-                    const ahora = new Date().getTime();
-                    localStorage.setItem("accesoMeroe", pass);
-                    localStorage.setItem("horaMeroe", ahora); // Guardamos la hora de inicio
+        window.onload = function() {
+            const accesoGuardado = localStorage.getItem("accesoMeroe");
+            const horaGuardada = localStorage.getItem("horaMeroe");
+            const ahora = new Date().getTime();
+    
+            // Comprobamos si existe la clave Y si no han pasado más de 10 min
+            if (accesoGuardado === CLAVE_CORRECTA && horaGuardada) {
+                if (ahora - horaGuardada < TIEMPO_EXPIRACION) {
                     entrarDirecto();
                 } else {
-                    alert("Contraseña incorrecta");
+                    // Si pasó el tiempo, borramos rastro y pedimos clave
+                    localStorage.removeItem("accesoMeroe");
+                    localStorage.removeItem("horaMeroe");
+                    document.getElementById("passInput").focus();
                 }
+            } else {
+                document.getElementById("passInput").focus();
             }
-        
-            // Enter para entrar
-            document.getElementById("passInput").addEventListener("keypress", (e) => {
-                if (e.key === "Enter") verificarAcceso();
+        };
+    
+        function entrarDirecto() {
+            document.getElementById('pantalla-acceso').style.display = 'none';
+            document.getElementById('contenido-privado').style.display = 'block';
+            // Actualizamos la hora para que los 10 min empiecen a contar de nuevo desde ahora
+            localStorage.setItem("horaMeroe", new Date().getTime());
+            if (typeof reveal === "function") reveal(); 
+        }
+    
+        function verificarAcceso() {
+            const pass = document.getElementById('passInput').value;
+    
+            if (pass === CLAVE_CORRECTA) {
+                const ahora = new Date().getTime();
+                localStorage.setItem("accesoMeroe", pass);
+                localStorage.setItem("horaMeroe", ahora); // Guardamos la hora de inicio
+                entrarDirecto();
+            } else {
+                alert("Contraseña incorrecta");
+            }
+        }
+    
+        // Enter para entrar
+        document.getElementById("passInput").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") verificarAcceso();
+        });
+    
+        function mostrarClave() {
+            const input = document.getElementById("passInput");
+            input.type = input.type === "password" ? "text" : "password";
+        }
+    
+        function reveal() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => {
+                const windowHeight = window.innerHeight;
+                const elementTop = sec.getBoundingClientRect().top;
+                const elementVisible = 100; // Distancia para activar
+
+                if (elementTop < windowHeight - elementVisible) {
+                    sec.classList.add('visible');
+                }
             });
-        
-            function mostrarClave() {
-                const input = document.getElementById("passInput");
-                input.type = input.type === "password" ? "text" : "password";
-            }
-        
-            // 1. Función única para mostrar secciones al hacer scroll
-            function reveal() {
-                const sections = document.querySelectorAll('section');
-                sections.forEach(sec => {
-                    const windowHeight = window.innerHeight;
-                    const elementTop = sec.getBoundingClientRect().top;
-                    const elementVisible = 100; // Píxeles antes de activarse
+        }
 
-                    if (elementTop < windowHeight - elementVisible) {
-                        sec.classList.add('visible');
-                    }
-                });
-            }
-
-            // 2. Escuchar eventos en todos los dispositivos
-            // 'passive: true' ayuda a que el scroll sea fluido en móviles
-            window.addEventListener('scroll', reveal, { passive: true });
-            window.addEventListener('touchmove', reveal, { passive: true });
-            window.addEventListener('wheel', reveal, { passive: true }); // Específico para ratón de PC
-
-            // 3. Ejecutar una vez al cargar por si hay secciones ya visibles
-            window.addEventListener('load', reveal);
-
-            // 4. Integración con tu sistema de acceso (Modifica tu función entrarDirecto)
-            function entrarDirecto() {
-                document.getElementById('pantalla-acceso').style.display = 'none';
-                document.getElementById('contenido-privado').style.display = 'block';
-                localStorage.setItem("horaMeroe", new Date().getTime());
-                
-                // Forzamos el reveal después de que el contenido aparezca
-                setTimeout(reveal, 100); 
-            }
-
-            // IMPORTANTE: Cambia el evento para que sea más sensible en móviles
-            window.addEventListener('scroll', reveal, { passive: true });
-            window.addEventListener('touchmove', reveal, { passive: true });
-        </script>
-    </body>
+        // IMPORTANTE: Cambia el evento para que sea más sensible en móviles
+        window.addEventListener('scroll', reveal, { passive: true });
+        window.addEventListener('touchmove', reveal, { passive: true });
+    </script>
     
 
     <main>
 
         <!-- ===== Estado de la Promoción ===== -->
-        <section>
+        <section class="seccion-principal">
             <h3>Estado de la Promoción</h3>
             <div class="timeline">
                 <div class="timeline-progress" style="width: 8%;"></div> 
@@ -1180,9 +1175,10 @@
             </div>
         </section>
 
-        <section class="proposals">
+        <section class="seccion-proposals">
             <h3 class="titulo-lujo">Propuestas de Modificación</h3>
-        
+        </section>
+        <section class="seccion-proposals">
             <div class="proposal-grid">
                 
                 <div class="proposal-card">
@@ -1204,7 +1200,8 @@
                         </div>
                     </div>
                 </div>
-                
+        </section>
+        <section class="seccion-proposals">    
                 <div class="proposal-card">
                     <div class="proposal-photo">
                         <img src="puerta_amario_corredera.jpg" alt="Armarios">
@@ -1224,7 +1221,8 @@
                         </div>
                     </div>
                 </div>
-                
+        </section>
+        <section class="seccion-proposals">   
                 <div class="proposal-card"> <div class="proposal-photo">
                         <img src="puerta_corredera_terraza.jpg" alt="Accesos">
                     </div>
@@ -1244,7 +1242,6 @@
                     </div>
                 </div>
                 
-        
             </div>
         </section>
     <!-- ===== Script para animación scroll ===== -->
