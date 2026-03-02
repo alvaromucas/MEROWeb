@@ -1159,9 +1159,23 @@
         };
     
         function entrarDirecto() {
+            // 1. Ocultamos el bloqueo y mostramos la web
             document.getElementById('pantalla-acceso').style.display = 'none';
             document.getElementById('contenido-privado').style.display = 'block';
-            // Actualizamos la hora para que los 10 min empiecen a contar de nuevo desde ahora
+            
+            // 2. Liberamos el scroll del body
+            document.body.style.overflowY = "auto";
+            document.body.style.height = "auto";
+            document.documentElement.style.overflowY = "auto";
+
+            // 3. ¡ESTA ES LA LÍNEA CLAVE!
+            // Fuerza a la pantalla a ir arriba del todo (coordenadas X=0, Y=0)
+            window.scrollTo(0, 0);
+            
+            // Opcional: Para asegurar en iPhones/Safari
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0;
+
             localStorage.setItem("horaMeroe", new Date().getTime());
             if (typeof reveal === "function") reveal(); 
         }
