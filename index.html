@@ -1071,7 +1071,7 @@
             <button onclick="verificarAcceso()" class="boton">Entrar</button>
         </div>
     </div>
-    <div class="background-fixed"></div>
+    
     <div id="contenido-privado" style="display: none;">
         
         <header>
@@ -1147,9 +1147,16 @@
         };
     
         function entrarDirecto() {
+            // 1. Ocultamos el login
             document.getElementById('pantalla-acceso').style.display = 'none';
-            document.getElementById('contenido-privado').style.display = 'block';
-            // Actualizamos la hora para que los 10 min empiecen a contar de nuevo desde ahora
+            
+            // 2. Le añadimos una "clase" al body para que el CSS libere el contenido
+            document.body.classList.add('acceso-concedido');
+            
+            // 3. Despertamos el scroll
+            document.body.style.overflowY = "auto";
+            document.documentElement.style.overflowY = "auto";
+            
             localStorage.setItem("horaMeroe", new Date().getTime());
             if (typeof reveal === "function") reveal(); 
         }
