@@ -25,8 +25,8 @@
             background-size: cover;
             color: white;
             padding: 120px 20px;
-            text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center !important;
         }
 
         header h1 {
@@ -73,18 +73,6 @@
             font-size: 1.4rem;
         }
 
-        /* TITULOS DE SECCIÓN (ESTADO DE LA PROMOCION / PROPUESTAS) */
-        h3 {
-            color: #064e3b;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(6, 78, 59, 0.1);
-            padding-bottom: 15px;
-        }
-        
         /* Estilo para PLATAFORMA DE COOPERATIVISTAS */
         h2 {
             color: #064e3b; /* Verde Bosque muy oscuro y profundo */
@@ -99,6 +87,19 @@
             display: block;
         }
 
+        /* TITULOS DE SECCIÓN (ESTADO DE LA PROMOCION / PROPUESTAS) */
+        h3 {
+            color: #064e3b;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(6, 78, 59, 0.1);
+            padding-bottom: 15px;
+        }
+        
+        
         header p {
             font-size: 1.2em;
         }
@@ -113,7 +114,8 @@
         header img:hover {
             transform: scale(1.05);
         }
-        /* Botones Premium - Forzar estilo en móvil */
+        
+        /* ===== Botones Premium ===== */
         .boton {
             display: inline-block !important;
             background-color: #25D366 !important; /* Forzamos el Verde WhatsApp */
@@ -137,11 +139,6 @@
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
 
-        /* Añade esto para asegurar que el área de los botones esté centrada */
-        header {
-            text-align: center !important;
-        }
-
         main {
             max-width: 900px;
             margin: 40px auto;
@@ -153,59 +150,13 @@
             padding: 10px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            opacity: 0;
+            opacity: 0.9;
             transform: translateY(20px);
             transition: all 0.6s ease-out;
         }
         section.visible {
             opacity: 0.9;
             transform: translateY(0);
-        }
-        @media screen and (max-width: 768px) {
-            /* 1. EL TÍTULO GIGANTE (H1) */
-            header h1 {
-                font-size: 2.8rem !important; /* Bajamos de 7rem a 2.8rem */
-                letter-spacing: 1px !important;
-                line-height: 1.1 !important;
-                margin-top: 20px !important;
-            }
-
-            /* 2. SUBTÍTULOS DEL HEADER (H2 y H3 dentro del header) */
-            header h2, header h3 {
-                font-size: 0.9rem !important; /* Más compactos */
-                padding: 8px 15px !important;
-                letter-spacing: 1px !important;
-                width: auto !important;
-                max-width: 90% !important; /* Evita que toquen los bordes */
-                display: inline-block !important;
-            }
-
-            /* 3. TÍTULOS DE SECCIÓN (H3 fuera del header) */
-            h3 {
-                font-size: 0.8rem !important; /* Bajamos de 2rem a 1.3rem */
-                letter-spacing: 2px !important;
-                margin-bottom: 25px !important;
-                padding-bottom: 10px !important;
-            }
-
-            /* 4. PLATAFORMA DE COOPERATIVISTAS (H2 fuera del header) */
-            h2 {
-                font-size: 1.1rem !important; /* Bajamos de 1.5rem a 1.1rem */
-                letter-spacing: 2px !important;
-                margin-bottom: 30px !important;
-                padding: 0 10px 10px 10px !important;
-            }
-
-            /* 5. AJUSTE DE LA IMAGEN DEL HEADER */
-            header img {
-                width: 90% !important; /* Que no se salga de la pantalla */
-                height: auto !important;
-            }
-
-            /* Reducimos el padding del header para que no ocupe toda la pantalla inicial */
-            header {
-                padding: 50px 15px !important;
-            }
         }
 
         /* --- BOTÓN Y PANEL PRINCIPAL --- */
@@ -391,81 +342,6 @@
         }
 
 
-
-
-        /* ===== Cronología Estilizada ===== */
-        /* ===== TODO ESTO VA DENTRO DEL @MEDIA ===== */
-        @media (max-width: 768px) {
-            .timeline { 
-                flex-direction: column !important; 
-                align-items: flex-start !important; 
-                margin: 40px 0 !important;
-                padding-left: 20px !important; 
-                position: relative !important;
-                display: flex !important; /* Asegura que se comporte como bloque flexible */
-            }
-
-            /* Línea gris de fondo */
-            .timeline::before { 
-                content: "" !important;
-                position: absolute !important;
-                left: 29px !important; 
-                top: 10px !important;
-                width: 2px !important; 
-                height: calc(100% - 35px) !important; 
-                background: #e5e5e5 !important;
-                z-index: 1 !important;
-            }
-
-            /* Línea negra de progreso */
-            .timeline-progress { 
-                position: absolute !important;
-                left: 29px !important; 
-                top: 10px !important;
-                width: 2px !important; 
-                height: 0% !important; /* CAMBIA ESTO PARA SUBIR/BAJAR EL NEGRO */
-                background: #1a1a1a !important;
-                z-index: 2 !important;
-                display: block !important;
-            }
-
-            .timeline-step { 
-                display: flex !important; 
-                align-items: center !important; 
-                gap: 20px !important; 
-                margin-bottom: 15px !important; 
-                position: relative !important;
-                z-index: 3 !important;
-                width: 100% !important;
-            }
-
-            /* El círculo normal */
-            .timeline-step .circle { 
-                margin: 0 !important; 
-                width: 20px !important;  
-                height: 20px !important;
-                flex-shrink: 0 !important;
-                background: white !important;
-                border: 2px solid #e5e5e5 !important;
-                border-radius: 50% !important;
-                box-sizing: border-box !important;
-            }
-
-            /* EL PUNTO NEGRO (ACTIVO) */
-            .timeline-step.active .circle {
-                background: #1a1a1a !important; /* Relleno negro */
-                border: 3px solid white !important; /* Borde interior blanco */
-                outline: 2px solid #1a1a1a !important; /* Borde exterior negro */
-            }
-
-            .timeline-step span { 
-                margin: 0 !important;
-                font-size: 0.6rem !important;
-                color: #333 !important;
-                font-weight: bold !important;
-                text-transform: uppercase !important;
-            }
-        } /* <--- ESTA LLAVE ES VITAL. CIERRA EL MODO MÓVIL */
         /* ===== Cronología Minimalista de Lujo ===== */
         .timeline {
             display: flex;
@@ -774,7 +650,128 @@
             font-size: 1.2em;
             user-select: none; /* Evita que se seleccione el icono como texto */
         }
+
+
+        /* ====== Movile format ===== */
         @media screen and (max-width: 768px) {
+            /* ===== Botones Premium ===== */
+            header h1 {
+                font-size: 2.8rem !important; /* Bajamos de 7rem a 2.8rem */
+                letter-spacing: 1px !important;
+                line-height: 1.1 !important;
+                margin-top: 20px !important;
+            }
+
+            /* 2. SUBTÍTULOS DEL HEADER (H2 y H3 dentro del header) */
+            header h2, header h3 {
+                font-size: 0.9rem !important; /* Más compactos */
+                padding: 8px 15px !important;
+                letter-spacing: 1px !important;
+                width: auto !important;
+                max-width: 90% !important; /* Evita que toquen los bordes */
+                display: inline-block !important;
+            }
+
+            /* 3. TÍTULOS DE SECCIÓN (H3 fuera del header) */
+            h3 {
+                font-size: 0.8rem !important; /* Bajamos de 2rem a 1.3rem */
+                letter-spacing: 2px !important;
+                margin-bottom: 25px !important;
+                padding-bottom: 10px !important;
+            }
+
+            /* 4. PLATAFORMA DE COOPERATIVISTAS (H2 fuera del header) */
+            h2 {
+                font-size: 1.1rem !important; /* Bajamos de 1.5rem a 1.1rem */
+                letter-spacing: 2px !important;
+                margin-bottom: 30px !important;
+                padding: 0 10px 10px 10px !important;
+            }
+
+            /* 5. AJUSTE DE LA IMAGEN DEL HEADER */
+            header img {
+                width: 90% !important; /* Que no se salga de la pantalla */
+                height: auto !important;
+            }
+
+            /* Reducimos el padding del header para que no ocupe toda la pantalla inicial */
+            header {
+                padding: 50px 15px !important;
+            }
+
+
+            /* ===== Cronología Estilizada ===== */
+            .timeline { 
+                flex-direction: column !important; 
+                align-items: flex-start !important; 
+                margin: 40px 0 !important;
+                padding-left: 20px !important; 
+                position: relative !important;
+                display: flex !important; /* Asegura que se comporte como bloque flexible */
+            }
+
+            /* Línea gris de fondo */
+            .timeline::before { 
+                content: "" !important;
+                position: absolute !important;
+                left: 29px !important; 
+                top: 10px !important;
+                width: 2px !important; 
+                height: calc(100% - 35px) !important; 
+                background: #e5e5e5 !important;
+                z-index: 1 !important;
+            }
+
+            /* Línea negra de progreso */
+            .timeline-progress { 
+                position: absolute !important;
+                left: 29px !important; 
+                top: 10px !important;
+                width: 2px !important; 
+                height: 0% !important; /* CAMBIA ESTO PARA SUBIR/BAJAR EL NEGRO */
+                background: #1a1a1a !important;
+                z-index: 2 !important;
+                display: block !important;
+            }
+
+            .timeline-step { 
+                display: flex !important; 
+                align-items: center !important; 
+                gap: 20px !important; 
+                margin-bottom: 15px !important; 
+                position: relative !important;
+                z-index: 3 !important;
+                width: 100% !important;
+            }
+
+            /* El círculo normal */
+            .timeline-step .circle { 
+                margin: 0 !important; 
+                width: 20px !important;  
+                height: 20px !important;
+                flex-shrink: 0 !important;
+                background: white !important;
+                border: 2px solid #e5e5e5 !important;
+                border-radius: 50% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* EL PUNTO NEGRO (ACTIVO) */
+            .timeline-step.active .circle {
+                background: #1a1a1a !important; /* Relleno negro */
+                border: 3px solid white !important; /* Borde interior blanco */
+                outline: 2px solid #1a1a1a !important; /* Borde exterior negro */
+            }
+
+            .timeline-step span { 
+                margin: 0 !important;
+                font-size: 0.6rem !important;
+                color: #333 !important;
+                font-weight: bold !important;
+                text-transform: uppercase !important;
+            }
+        
+            /* 1. ===== Propuestas ===== */
             /* 1. LA TARJETA: Diseño fluido */
             .proposal-card {
                 display: block !important; /* Cambiamos grid por block para evitar cortes */
@@ -794,7 +791,7 @@
 
             .proposal-photo img {
                 width: 90% !important;
-                height: 90% !important;
+                height: 100% !important;
                 object-fit: cover !important;
                 border-radius: 6px !important;
             }
@@ -823,13 +820,14 @@
                 color: #666 !important;
                 
                 /* AUMENTA ESTE VALOR PARA DAR MÁS ESPACIO */
-                margin-top: 25px !important; 
+                margin-top: 0px !important; 
                 text-align: justify !important;
-                margin-bottom: 15px !important;
+                margin-bottom: 10px !important;
                 display: block !important;
             }
                 
             /* 4. LA CRONOLOGÍA: SE VA DEBAJO DE TODO LIMPIANDO EL FLOTADO */
+            /* 4. LA CRONOLOGÍA: Ajuste de contenedor */
             .proposal-timeline {
                 clear: both !important; 
                 width: 100% !important;
@@ -837,63 +835,178 @@
                 justify-content: space-between !important;
                 align-items: flex-start !important;
                 padding-top: 20px !important;
-
-                
-                margin-top: 20px !important; 
+                margin-top: -10px !important; 
                 position: relative !important;
-                padding-bottom: 70px !important; 
+                padding-bottom: 8px !important;
+                height: 50px !important; /* Altura fija necesaria para el zigzag */
             }
-            
-            /* Ajuste de los pasos */
+
+            /* Ajuste de los pasos para centrar el círculo */
             .proposal-timeline .timeline-step {
                 flex: 1 !important;
                 display: flex !important;
                 flex-direction: column !important;
                 align-items: center !important;
+                justify-content: center !important; /* Centra el círculo verticalmente */
                 position: relative !important;
-                min-width: 0 !important; /* Evita que los textos largos rompan el flex */
+                height: 100% !important; 
             }
 
-            .proposal-timeline .timeline-step span {
-                font-size: 0.55rem !important;
-                text-align: left !important; /* Cambiamos a left para que al girar suban rectos */
-                margin-top: 12px !important;
-                line-height: 1 !important;
-                display: block !important;
-                color: #888 !important;
-                font-weight: bold !important;
-                text-transform: uppercase !important;
+            /* LA LÍNEA GRIS (Fondo) */
+            .proposal-timeline::after {
+                content: "" !important;
+                position: absolute !important;
+                top: 80% !important; /* Cambiado de 10% a 50% */
+                transform: translateY(-50%) !important;
+                left: 0% !important;
+                right: 0% !important;
+                height: 2px !important;
+                background: #eee !important;
+                z-index: 1 !important;
+            }
+        
 
-                /* --- ESTO GIRA EL TEXTO --- */
-                writing-mode: vertical-rl !important; 
-                transform: rotate(180deg) !important; /* Lo giramos para que se lea de abajo a arriba */
-                white-space: nowrap !important; /* Evita que el texto se parta en dos líneas */
-                margin-left: auto !important;
-                margin-right: auto !important;
+            /* LA LÍNEA VERDE (Progreso) */
+            .proposal-timeline .timeline-progress {
+                background: #064e3b !important; /* Verde oscuro */
+                position: absolute !important;
+                top: 80% !important;          
+                transform: translateY(-50%) !important;
+                left: 0% !important;          
+                
+                /* CAMBIO CLAVE: Quitamos 'right' y ponemos 'width' a 0 */
+                right: auto !important; 
+                
+                height: 2px !important;       
+                z-index: 2 !important;         /* Para que pise a la gris */
+                transition: width 0.8s ease !important;
             }
 
-            /* Círculos */
+            /* Los Círculos */
             .proposal-timeline .circle {
                 width: 12px !important;
                 height: 12px !important;
                 background: white !important;
                 border: 2px solid #ddd !important;
-                z-index: 2 !important;
                 border-radius: 50% !important;
+                position: relative !important; 
+                z-index: 2 !important;
+
+                /* --- CAMBIO AQUÍ --- */
+                top: 17px !important; /* Un valor negativo lo sube. Prueba con -15px o -20px si quieres más */
+                margin: 0 !important; 
             }
 
-            /* La línea que une los puntos */
-            .proposal-timeline::after {
+            /* Los Textos (Zig-Zag) */
+            /* Estilo para TODOS los nombres (por defecto) */
+            .proposal-timeline .timeline-step span {
+                /* 1. Quitamos el bloqueo de línea */
+                white-space: normal !important; 
+                
+                /* 2. Definimos un ancho máximo para forzar el salto */
+                width: 65px !important; 
+                
+                /* 3. Centramos el texto internamente */
+                text-align: center !important;
+                line-height: 1.1 !important; /* Estrecha el espacio entre las filas de texto */
+                
+                /* Mantén tus otros estilos de tamaño y posición */
+                font-size: 0.4rem !important;
+                position: absolute !important;
+                left: 55% !important;
+                transform: translateX(-50%) !important;
+                display: block !important;
+            }
+
+            /* Impares abajo */
+            .proposal-timeline .timeline-step:nth-child(odd) span {
+                top: 65px !important; /* 15px por debajo del centro */
+            }
+
+            /* Pares arriba */
+            .proposal-timeline .timeline-step:nth-child(even) span {
+                top: 10px !important; /* 15px por encima del centro (ajustado para que no choquen) */
+            }
+            
+            /* Esto busca el SPAN que esté dentro de un paso ACTIVO */
+            /* Forzamos la negrita máxima y el color */
+            .proposal-timeline .timeline-step.active span {
+                color: #064e3b !important;
+                font-weight: 900 !important; /* El máximo real estándar */
+                
+                /* TRUCO DE SUPER GROSOR: Sombra en todas las direcciones */
+                text-shadow: 
+                    0.2px 0 0 #064e3b, 
+                    -0.2px 0 0 #064e3b, 
+                    0 0.2px 0 #064e3b, 
+                    0 -0.2px 0 #064e3b !important;
+                
+            }
+
+            
+
+            /* Círculos completados: Relleno verde sin el anillo de 'active' */
+            .proposal-timeline .timeline-step.completed .circle {
+                background: #064e3b !important;
+                border-color: #064e3b !important;
+                opacity: 1; /* Un pelín de transparencia para diferenciarlo del activo */
+            }
+            /* LÍNEAS CONECTORAS (Guías) */
+            .proposal-timeline .timeline-step::before {
                 content: "" !important;
                 position: absolute !important;
-                top: 26px !important; /* Ajustado para que pase por el centro del círculo */
-                left: 10% !important; /* Empieza en el primer círculo */
-                right: 10% !important; /* Termina en el último */
-                height: 2px !important;
-                background: #eee !important;
-                z-index: 1 !important;
+                left: 49% !important;
+                width: 1px !important;
+                border-left: 1px dashed #064e3b !important; /* Línea punteada verde */
+                z-index: 0 !important;
+                opacity: 0.4; /* Sutil para no agobiar */
             }
-        }
+
+            /* Para los textos de ABAJO (Impares) */
+            .proposal-timeline .timeline-step:nth-child(odd)::before {
+                top: 45px !important; /* Empieza en el centro del círculo */
+                height: 15px !important; /* Baja hasta el texto */
+            }
+
+            /* Para los textos de ARRIBA (Pares) */
+            .proposal-timeline .timeline-step:nth-child(even)::before {
+                bottom: 10px !important; /* Sube desde el círculo */
+                height: 15px !important; /* Altura hasta el texto de arriba */
+            }
+
+            /* --- SUBMENÚS DESPLEGABLES --- */
+            .sub-menu {
+                max-height: 0;
+                overflow: hidden;
+                background: #f9fdfb;
+                transition: max-height 0.4s ease-out;
+            }
+
+            .sub-menu.show {
+                max-height: 400px; /* Suficiente para logo y textos */
+                border-bottom: 1px solid #eee;
+            }
+
+            /* Contenido de Constructora (Centrado) */
+            .sub-menu-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            .logo-constructora {
+                width: 80px !important; /* Ajusta este valor (antes era 130px) */
+                margin-bottom: 5px !important;
+            }
+
+            .nombre-empresa {
+                font-weight: bold;
+                color: #333;
+                margin: 0;
+            }
+
+        } /* <--- ESTA LLAVE ES VITAL. CIERRA EL MODO MÓVIL */
     </style>
 </head>
 <body>
@@ -986,14 +1099,6 @@
                 }
             };
         
-            function entrarDirecto() {
-                document.getElementById('pantalla-acceso').style.display = 'none';
-                document.getElementById('contenido-privado').style.display = 'block';
-                // Actualizamos la hora para que los 10 min empiecen a contar de nuevo desde ahora
-                localStorage.setItem("horaMeroe", new Date().getTime());
-                if (typeof reveal === "function") reveal(); 
-            }
-        
             function verificarAcceso() {
                 const pass = document.getElementById('passInput').value;
         
@@ -1017,17 +1122,37 @@
                 input.type = input.type === "password" ? "text" : "password";
             }
         
+            // 1. Función única para mostrar secciones al hacer scroll
             function reveal() {
                 const sections = document.querySelectorAll('section');
                 sections.forEach(sec => {
                     const windowHeight = window.innerHeight;
                     const elementTop = sec.getBoundingClientRect().top;
-                    const elementVisible = 100; // Distancia para activar
+                    const elementVisible = 100; // Píxeles antes de activarse
 
                     if (elementTop < windowHeight - elementVisible) {
                         sec.classList.add('visible');
                     }
                 });
+            }
+
+            // 2. Escuchar eventos en todos los dispositivos
+            // 'passive: true' ayuda a que el scroll sea fluido en móviles
+            window.addEventListener('scroll', reveal, { passive: true });
+            window.addEventListener('touchmove', reveal, { passive: true });
+            window.addEventListener('wheel', reveal, { passive: true }); // Específico para ratón de PC
+
+            // 3. Ejecutar una vez al cargar por si hay secciones ya visibles
+            window.addEventListener('load', reveal);
+
+            // 4. Integración con tu sistema de acceso (Modifica tu función entrarDirecto)
+            function entrarDirecto() {
+                document.getElementById('pantalla-acceso').style.display = 'none';
+                document.getElementById('contenido-privado').style.display = 'block';
+                localStorage.setItem("horaMeroe", new Date().getTime());
+                
+                // Forzamos el reveal después de que el contenido aparezca
+                setTimeout(reveal, 100); 
             }
 
             // IMPORTANTE: Cambia el evento para que sea más sensible en móviles
@@ -1070,7 +1195,7 @@
                             <p>Mejora integral de la envolvente térmica y confort acústico mediante el cambio de mecanismos abatibles por oscilobatientes en toda la vivienda.</p>
                         </div>
                         <div class="proposal-timeline">
-                            <div class="timeline-progress" style="width: 50%;"></div> 
+                            <div class="timeline-progress" style="width: 50% !important;"></div> 
                             <div class="timeline-step completed"><div class="circle"></div><span>EN REDACCIÓN</span></div>
                             <div class="timeline-step completed"><div class="circle"></div><span>RECOGIDA DE FIRMAS</span></div>
                             <div class="timeline-step active"><div class="circle"></div><span>CONSULTA DE PRECIO</span></div>
@@ -1090,7 +1215,7 @@
                             <p>Optimización del espacio interior de los dormitorios sustituyendo las hojas abatibles por un sistema de guiado oculto y puertas correderas de gran formato.</p>
                         </div>
                         <div class="proposal-timeline">
-                            <div class="timeline-progress" style="width: 10%;"></div>  
+                            <div class="timeline-progress" style="width: 10% !important;"></div>  
                             <div class="timeline-step active"><div class="circle"></div><span>EN REDACCIÓN</span></div>
                             <div class="timeline-step"><div class="circle"></div><span>RECOGIDA DE FIRMAS</span></div>
                             <div class="timeline-step"><div class="circle"></div><span>CONSULTA DE PRECIO</span></div>
@@ -1109,7 +1234,7 @@
                             <p>Cambio de puertas abatibles de los accesos de las viviendas al exterior por puerta correderas siempre que aplique.</p>
                         </div>
                         <div class="proposal-timeline">
-                            <div class="timeline-progress" style="width: 10%;"></div> 
+                            <div class="timeline-progress" style="width: 10% !important;"></div>  
                             <div class="timeline-step active"><div class="circle"></div><span>EN REDACCIÓN</span></div>
                             <div class="timeline-step"><div class="circle"></div><span>RECOGIDA DE FIRMAS</span></div>
                             <div class="timeline-step"><div class="circle"></div><span>CONSULTA DE PRECIO</span></div>
