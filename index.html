@@ -1108,11 +1108,13 @@
         };
     
         function entrarDirecto() {
-            document.getElementById('pantalla-acceso').style.display = 'none';
+            const pantalla = document.getElementById('pantalla-acceso');
+            
+            pantalla.style.display = 'none';
+            pantalla.style.position = 'absolute'; // 👈 Esto libera el scroll
+            pantalla.style.height = '0';
+            
             document.getElementById('contenido-privado').style.display = 'block';
-            // Actualizamos la hora para que los 10 min empiecen a contar de nuevo desde ahora
-            localStorage.setItem("horaMeroe", new Date().getTime());
-            if (typeof reveal === "function") reveal(); 
         }
     
         function verificarAcceso() {
