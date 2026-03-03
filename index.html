@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <meta charset="UTF-8">
     <title>MEROE - Los Berrocales</title>
     <style>
@@ -1463,21 +1463,23 @@
         function abrirPdfPopup(url, titulo) {
             const contenedor = document.getElementById("contenido-dinamico");
             
-            // page-fit asegura que se vea la página completa sin zoom inicial
-            const urlLimpia = url + "#toolbar=0&navpanes=0&view=page-fit";
+            // El parámetro #view=FitH es vital para forzar el ajuste horizontal
+            const urlLimpia = url + "#toolbar=0&navpanes=0&view=FitH";
             const esMovil = window.innerWidth < 768;
 
             const anchoDeseado = esMovil ? "100%" : "850px";
             const alturaDeseada = esMovil ? "60vh" : "75vh"; 
 
+            // Usamos una combinación de div y object/embed para mejor compatibilidad móvil
             contenedor.innerHTML = `
                 <h3 style="text-align:center; color:#064e3b; margin: 0 0 10px 0; font-size: 1.1rem;">📐 ${titulo}</h3>
-                <div style="width: ${anchoDeseado}; height: ${alturaDeseada}; overflow: auto; -webkit-overflow-scrolling: touch; border-radius: 10px;">
-                    <iframe src="${urlLimpia}" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:none; display:block; background: white;">
-                    </iframe>
+                <div style="width: ${anchoDeseado}; height: ${alturaDeseada}; -webkit-overflow-scrolling: touch; overflow: auto; border-radius: 10px;">
+                    <object data="${urlLimpia}" type="application/pdf" width="100%" height="100%">
+                        <embed src="${urlLimpia}" type="application/pdf" width="100%" height="100%" />
+                        <p>Tu dispositivo no puede visualizar el PDF directamente. 
+                        <a href="${url}" target="_blank">Haz clic aquí para abrirlo.</a>
+                        </p>
+                    </object>
                 </div>
             `;
             
